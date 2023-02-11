@@ -1,3 +1,17 @@
 # Asteroids - robust
 
 See in-development goals and design spec for the project in [this public gist](https://gist.github.com/keerthik/d174140ede5c2a0c2bd8787af13761ad). As the project develops and solidifies, more information will move into this readme.
+
+## Worklog
+Unofficial work log. Can be used as a more detailed commit log history (when it's accurate).
+
+### Done
+- Install Unity 2023.1.0b1 (latest beta at the time)
+- Install Visual Studio Code (free)
+- Set up VSCode for Unity [following official guide](https://code.visualstudio.com/docs/other/unity)
+- Install latest [Blender](https://www.blender.org/)
+- Create 3D model for player space ship in Blender following Colby's [space ship tutorial](https://www.youtube.com/watch?v=jo7FZBf4VkM)
+- Set up git repository
+### TODO
+- Script basic 4-control movement for player: accelerate, decelerate, turn left, turn right
+- Script momentum and angular momentum for player
