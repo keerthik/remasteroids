@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.unity.feature.development": "1.0.2",
+    "com.unity.ide.vscode": "https://github.com/Unity-Technologies/com.unity.ide.vscode.git?path=/Packages/com.unity.ide.vscode",
     "com.unity.render-pipelines.high-definition": "15.0.3",
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.8.0",
