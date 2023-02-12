@@ -1,17 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Inputs;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IFrameProcessor
 {
     const float maxSpeed = 81f;
-    Vector2 speed = new Vector2(0, 0);
+    Vector2 heading = new(0, 0);
 
-    void MoveFrame(Vector2 direction) {
-        speed += direction * Time.deltaTime;
+
+    void Accelerate() {
+        if (heading.sqrMagnitude < maxSpeed) {
+            Debug.Log("We will speed up slightly!");
+        }
     }
 
-    void Update() {
-
+    public void ProcessInputFrame(InputFrame iframe) {
+        if (iframe.HasNoGameInput) return;
+        if (iframe.HasInput(GameAction.Accelerate)) {
+            Accelerate();
+        }
     }
 }

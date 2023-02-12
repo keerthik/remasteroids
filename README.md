@@ -17,4 +17,4 @@ Unofficial work log. Can be used as a more detailed commit log history (when it'
 - Script momentum and angular momentum for player
 
 ## Notes
-[1] VSCode's Unity package is no longer supported, but it is still available on github.
+[1] VSCode's Unity package is no longer supported, but it is [still available on github](https://github.com/Unity-Technologies/com.unity.ide.vscode/tree/next/master/Packages/com.unity.ide.vscode)
