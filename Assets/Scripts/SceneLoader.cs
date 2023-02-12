@@ -18,10 +18,4 @@ public class SceneLoader : MonoBehaviour
         Debug.Log($"Scene loader started at time {Time.time}");
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

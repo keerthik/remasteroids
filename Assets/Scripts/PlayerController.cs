@@ -8,10 +8,14 @@ public class PlayerController : MonoBehaviour, IFrameProcessor
     const float maxSpeed = 81f;
     Vector2 heading = new(0, 0);
 
+    void Awake() {
+        InputCoordinator.Shared.RegisterRecipient(this);
+    }
 
     void Accelerate() {
-        if (heading.sqrMagnitude < maxSpeed) {
-            Debug.Log("We will speed up slightly!");
+        float speed = heading.sqrMagnitude;
+        if (speed < maxSpeed) {
+            Debug.Log($"We will speed up slightly! {speed} < {maxSpeed}");
         }
     }
 

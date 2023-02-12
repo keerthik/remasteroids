@@ -22,7 +22,6 @@ namespace Inputs {
         }
 
         void FixedUpdate() {
-            if (!Input.anyKeyDown) return;
             currentFrame = new();
             if (inGame) {
                 foreach (KeyValuePair<GameAction, KeyCode> kvp in controls.gameControls) {

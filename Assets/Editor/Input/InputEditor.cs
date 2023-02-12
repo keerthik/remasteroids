@@ -9,7 +9,9 @@ namespace Inputs {
         public static void CreateInputMapping() {
             InputMapping asset = ScriptableObject.CreateInstance<InputMapping>();
             string path = AssetDatabase.GUIDToAssetPath(Selection.assetGUIDs[0]);
-            if (string.IsNullOrWhiteSpace(path)) path = "Assets/InputMapping.asset";
+            if (string.IsNullOrWhiteSpace(path)) path = "Assets";
+            path += "/InputMapping.asset";
+            Debug.Log(path);
 
             AssetDatabase.CreateAsset(asset, path);
             AssetDatabase.SaveAssets();
