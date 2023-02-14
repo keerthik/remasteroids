@@ -6,8 +6,8 @@ public class Universal
 {
     public static float gameplayDeltaTime => Time.fixedDeltaTime;
     public static float uiDeltaTime => Time.fixedUnscaledDeltaTime;
+    public static float frameTime => Time.fixedUnscaledTime;
     public static float realTime => Time.realtimeSinceStartup;
-
 
     public class SingletonBehaviour : MonoBehaviour {}
 

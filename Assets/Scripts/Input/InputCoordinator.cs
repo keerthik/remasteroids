@@ -8,6 +8,7 @@ namespace Inputs {
         public InputSource currentSource;
         public bool inGame;
         public InputMapping controls;
+        // We are starting with a single player game, so a single frame should be sufficient
         private InputFrame currentFrame;
         private List<IFrameProcessor> inputRecipients;
 
@@ -22,7 +23,12 @@ namespace Inputs {
         }
 
         void FixedUpdate() {
-            currentFrame = new();
+            currentFrame = new(Universal.frameTime);
+            CaptureDirectInputForPlayer1();
+        }
+
+        void CaptureDirectInputForPlayer1() {
+            if (InputSource.Player != currentSource) return;
             if (inGame) {
                 foreach (KeyValuePair<GameAction, KeyCode> kvp in controls.gameControls) {
                     if (Input.GetKey(kvp.Value)) {
