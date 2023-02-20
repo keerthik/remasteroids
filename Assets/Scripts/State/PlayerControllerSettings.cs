@@ -7,9 +7,14 @@ namespace State {
     {
         public float version;
 
+        public float velocityReplacementFactor;
+
         public float maxSpeed;
-        public float minSpeed;
         public float acceleration;
         public float deceleration;
+        
+        public float maxAngleVelocity;
+        public float angleAcceleration;
+        public float angleDeceleration;
     }
 }

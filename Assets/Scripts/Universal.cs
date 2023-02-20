@@ -18,6 +18,14 @@ public static class Universal
         return x.CompareTo(y) < 0;
     }
 
+    public static int Sign(this float x) {
+        return x >= 0 ? 1 : -1;
+    }
+
+    public static Vector2 XZ(this Vector3 a) {
+        return new(a.x, a.z);
+    }
+
     public class SingletonBehaviour : MonoBehaviour {}
 
     public abstract class SingletonBehaviour<SingletonAssistant> : SingletonBehaviour

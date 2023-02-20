@@ -17,3 +17,6 @@ MonoBehaviour:
   minSpeed: -5
   acceleration: 15
   deceleration: -0.5
+  maxAngleVelocity: 180
+  angleAcceleration: 90
+  angleDeceleration: 30
