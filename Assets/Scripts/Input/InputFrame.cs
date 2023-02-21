@@ -11,7 +11,7 @@ namespace Inputs {
         // We assume only one menu action can be done in one frame
         MenuAction ?menuInput = null;
         public bool HasNoGameInput => gameInputs.Count == 0;
-
+        public float Time => time;
         public void AddGameInput(GameAction newInput) => gameInputs.Add(newInput);
         public void SetMenuInput(MenuAction newInput) => menuInput = newInput;
         public bool HasInput(GameAction toCheck) => gameInputs.Contains(toCheck);

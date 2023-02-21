@@ -80,7 +80,6 @@ public class PlayerController : Universal.SingletonBehaviour<PlayerController>, 
         }
     }
 
-
     public void FixedUpdate() {
         ManageMovement();
     }
