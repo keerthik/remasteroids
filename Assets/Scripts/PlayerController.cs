@@ -24,23 +24,11 @@ public class PlayerController : Universal.SingletonBehaviour<PlayerController>, 
         InputCoordinator.Shared.RegisterRecipient(this);
     }
 
-    void ForwardThrust() {
+    void Thrust(int forward) {
         // We remove some of our existing thrust and replace it with the user input
         velocity -= Universal.gameplayDeltaTime * settings.velocityReplacementFactor * settings.acceleration * velocity.normalized;
-        velocity += Universal.gameplayDeltaTime * settings.velocityReplacementFactor * settings.acceleration * heading;
-        if (speed.LT(settings.maxSpeed)) {
-            velocity += Universal.gameplayDeltaTime * settings.acceleration * heading;
-            maxSpeed = false;
-        } else {
-            maxSpeed = true;
-        }
-    }
-
-    void ReverseThrust() {
-        int forward = -1;
-        velocity -= Universal.gameplayDeltaTime * settings.velocityReplacementFactor * settings.acceleration * velocity.normalized;
         velocity += forward * Universal.gameplayDeltaTime * settings.velocityReplacementFactor * settings.acceleration * heading;
-        if (speed.GT(forward * settings.maxSpeed)) {
+        if ((forward * speed).LT(settings.maxSpeed)) {
             velocity += forward * Universal.gameplayDeltaTime * settings.acceleration * heading;
             maxSpeed = false;
         } else {
@@ -79,16 +67,16 @@ public class PlayerController : Universal.SingletonBehaviour<PlayerController>, 
     public void ProcessInputFrame(InputFrame iframe) {
         if (iframe.HasNoGameInput) return;
         if (iframe.HasInput(GameAction.Accelerate)) {
-            ForwardThrust();
+            Thrust(1);
         }
         if (iframe.HasInput(GameAction.Decelerate)) {
-            ReverseThrust();
-        }
-        if (iframe.HasInput(GameAction.TurnLeft)) {
-            Yaw(-1);
+            Thrust(-1);
         }
         if (iframe.HasInput(GameAction.TurnRight)) {
             Yaw(1);
+        }
+        if (iframe.HasInput(GameAction.TurnLeft)) {
+            Yaw(-1);
         }
     }
 
