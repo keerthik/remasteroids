@@ -5,7 +5,7 @@ using UnityEngine;
 namespace State {
     public class PlayerControllerSettings : ScriptableObject
     {
-        public float version;
+        public float gameVersion;
 
         public float velocityReplacementFactor;
 

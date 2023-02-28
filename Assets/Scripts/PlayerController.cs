@@ -13,6 +13,7 @@ public class PlayerController : Universal.SingletonBehaviour<PlayerController>, 
     [SerializeField] Vector3 velocity = Vector3.zero;
     [SerializeField] float angleVelocity = 0;
     [SerializeField] bool maxSpeed = false;
+    [SerializeField] GameAction action;
 
     void Awake() {
         base.Awake();
@@ -67,16 +68,24 @@ public class PlayerController : Universal.SingletonBehaviour<PlayerController>, 
     public void ProcessInputFrame(InputFrame iframe) {
         if (iframe.HasNoGameInput) return;
         if (iframe.HasInput(GameAction.Accelerate)) {
+            action = GameAction.Accelerate;
             Thrust(1);
         }
         if (iframe.HasInput(GameAction.Decelerate)) {
+            action = GameAction.Decelerate;
             Thrust(-1);
         }
         if (iframe.HasInput(GameAction.TurnRight)) {
+            action = GameAction.TurnRight;
             Yaw(1);
         }
         if (iframe.HasInput(GameAction.TurnLeft)) {
+            action = GameAction.TurnLeft;
             Yaw(-1);
+        }
+        if (iframe.HasInput(GameAction.PauseMenu)) {
+            action = GameAction.PauseMenu;
+            PauseMenu.Shared.PauseAndSaveReplay();
         }
     }
 

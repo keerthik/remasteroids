@@ -9,6 +9,7 @@ namespace Inputs {
         public bool inGame;
         public bool recording;
         public InputMapping controls;
+        public ReplayData replay;
         // We are starting with a single player game, so a single frame should be sufficient
         private InputFrame currentFrame;
         private List<IFrameProcessor> gameInputRecipients;
@@ -17,6 +18,7 @@ namespace Inputs {
         protected override void Awake() {
             base.Awake();
             gameInputRecipients = new();
+            replay = new();
         }
 
         public void RegisterRecipient(IFrameProcessor recipient) {
@@ -24,15 +26,16 @@ namespace Inputs {
             gameInputRecipients.Add(recipient);
         }
 
+        void Start() {
+            if (InputSource.Replay == currentSource) replay.LoadData("test1");
+            if (InputSource.Player == currentSource) replay.Prepare();
+        }
+
         void FixedUpdate() {
             if (inGame) {
                 CaptureDirectInputForPlayer1();
                 DispatchRecordedInputForPlayer1();
             }
-        }
-
-        void RecordInputForPlayer1() {
-            // Save currentSource to file
         }
 
         void DispatchGameInputs(InputFrame frame) {
@@ -50,15 +53,22 @@ namespace Inputs {
                 }
             }
             DispatchGameInputs(currentFrame);
-            RecordInputForPlayer1();
+            if (recording) replay.RecordInputForPlayer1(currentFrame);
         }
 
         void DispatchRecordedInputForPlayer1() {
             if (InputSource.Replay != currentSource) return;
-            // <--Load next inputframe here-->
-            currentFrame = new(Universal.gameTime); // not like this
+            if (!replay.HasLoaded) return;
+            if (null == currentFrame) currentFrame = replay.GetNextInputFrame();
+            if (!replay.HasMoreFrames) {
+                Debug.Log("Replay has ended!");
+                Debug.Break();
+                return;
+            }
             if ((currentFrame.Time - Universal.gameplayDeltaTime).LT(Universal.gameTime)) {
                 DispatchGameInputs(currentFrame);
+                // this frame is used, move on
+                currentFrame = null;
             } else {
                 // <--load next frame-->
             }

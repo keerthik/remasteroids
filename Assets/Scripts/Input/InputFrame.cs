@@ -18,5 +18,21 @@ namespace Inputs {
         public InputFrame(float frametime) {
             time = frametime;
         }
+
+        public string ToString() {
+            string str = $"{time}";
+            foreach (GameAction action in gameInputs) str += $":{(int)action}";
+            return str;
+        }
+
+        public static InputFrame FromString(string data) {
+            Queue<string> dataparts = new(data.Split(":"));
+            float t = float.Parse(dataparts.Dequeue());
+            InputFrame result = new(t);
+            while (dataparts.Count > 0) {
+                result.AddGameInput((GameAction)int.Parse(dataparts.Dequeue()));
+            }
+            return result;
+        }
     }
 }

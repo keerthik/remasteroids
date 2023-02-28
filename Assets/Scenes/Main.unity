@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 272119300}
   - component: {fileID: 272119299}
   - component: {fileID: 272119301}
+  - component: {fileID: 272119302}
   m_Layer: 0
   m_Name: GameDirector
   m_TagString: Untagged
@@ -178,9 +179,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7f1b144140a984abe36d2e8a0a1a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSource: 0
+  currentSource: 1
   inGame: 1
+  recording: 0
   controls: {fileID: 11400000, guid: 6f61d177a1001454b87842b7b6b10dae, type: 2}
+--- !u!114 &272119302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272119298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c783b603fc9be94cb8e7339699582c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &505614312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -360,7 +374,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: c1d7b07a3811b15489460228f0b938f5, type: 2}
   heading: {x: 0, y: 0, z: 0}
-  velocity: 0
+  speed: 0
+  velocity: {x: 0, y: 0, z: 0}
+  angleVelocity: 0
+  maxSpeed: 0
+  action: 0
 --- !u!1 &1142830604
 GameObject:
   m_ObjectHideFlags: 0

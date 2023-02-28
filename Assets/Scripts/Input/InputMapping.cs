@@ -5,11 +5,12 @@ using UnityEngine;
 namespace Inputs {
     // These may turn into their own classes in the future to support parametrization
     public enum GameAction {
-        Accelerate,
-        Decelerate,
-        TurnLeft,
-        TurnRight,
-        PauseMenu,
+        Accelerate  = 1 << 0,
+        Decelerate  = 1 << 1,
+        TurnLeft    = 1 << 2,
+        TurnRight   = 1 << 3,
+        FireWeapon  = 1 << 4,
+        PauseMenu   = 1 << 5,
     }
     public enum MenuAction {
         SelectUp,
@@ -32,6 +33,8 @@ namespace Inputs {
             {GameAction.Decelerate, KeyCode.DownArrow},
             {GameAction.TurnLeft, KeyCode.LeftArrow},
             {GameAction.TurnRight, KeyCode.RightArrow},
+            {GameAction.FireWeapon, KeyCode.Space},
+            {GameAction.PauseMenu, KeyCode.Escape},
         };
 
         public Dictionary<MenuAction, KeyCode> menuControls = new(){

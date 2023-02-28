@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89dd4880642395f479f211023d5e86b6, type: 3}
   m_Name: PlayerControllerSettings
   m_EditorClassIdentifier: 
-  version: 0
-  maxSpeed: 8
-  minSpeed: -5
-  acceleration: 15
-  deceleration: -0.5
-  maxAngleVelocity: 180
-  angleAcceleration: 90
-  angleDeceleration: 30
+  gameVersion: 0
+  velocityReplacementFactor: 0.5
+  maxSpeed: 200
+  acceleration: 60
+  deceleration: 20
+  maxAngleVelocity: 1440
+  angleAcceleration: 720
+  angleDeceleration: 360
