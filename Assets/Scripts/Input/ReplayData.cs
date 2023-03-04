@@ -7,13 +7,14 @@ namespace Inputs {
     public class ReplayData
     {
         [SerializeField] private Queue<InputFrame> data;
-        private bool isLoaded = false;
-        public bool HasLoaded => isLoaded;
 
         public string replayFileName = null;
         public bool HasMoreFrames => (data?.Count ?? 0) > 0;
 
         public string filename;
+
+        public LoadableUnit loading = new();
+
         public void RecordInputForPlayer1(InputFrame frame) {
             if (frame.HasNoGameInput) return;
             data.Enqueue(frame);
@@ -25,7 +26,7 @@ namespace Inputs {
         }
 
         public void LoadData(string name = null) {
-            if (isLoaded) return;
+            if (loading.IsLoaded) return;
             data = new();
             // Load data from file here
             // This should be async eventually
@@ -38,7 +39,7 @@ namespace Inputs {
                 RecordInputForPlayer1(frame);
             }
             Debug.Log($"Replay loaded with {data.Count} frames");
-            isLoaded = true;
+            loading.Loaded();
         }
 
         private string ReplayFile(string name = null) {

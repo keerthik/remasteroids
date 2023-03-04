@@ -9,7 +9,10 @@ public static class Universal
     public static float uiDeltaTime => Time.fixedUnscaledDeltaTime;
     public static float menuTime => Time.fixedUnscaledTime;
     public static float realTime => Time.realtimeSinceStartup;
-    public static float gameTime => Time.fixedTime;
+    public static float gameTime => gameAbsoluteTime - gameStartTime;
+    public static float gameAbsoluteTime => Time.fixedTime;
+
+    public static float gameStartTime;
 
     public static bool GT(this float x, float y) {
         return x.CompareTo(y) > 0;

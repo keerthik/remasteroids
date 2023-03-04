@@ -15,6 +15,8 @@ public class PlayerController : Universal.SingletonBehaviour<PlayerController>, 
     [SerializeField] bool maxSpeed = false;
     [SerializeField] GameAction action;
 
+    public LoadableUnit loading = new();
+
     void Awake() {
         base.Awake();
         heading = transform.forward;
@@ -23,6 +25,7 @@ public class PlayerController : Universal.SingletonBehaviour<PlayerController>, 
 
     void Start() {
         InputCoordinator.Shared.RegisterRecipient(this);
+        loading.Loaded();
     }
 
     void Thrust(int forward) {
@@ -87,6 +90,10 @@ public class PlayerController : Universal.SingletonBehaviour<PlayerController>, 
             action = GameAction.PauseMenu;
             PauseMenu.Shared.PauseAndSaveReplay();
         }
+    }
+
+    public LoadableUnit GetLoadableUnit() {
+        return loading;
     }
 
     public void FixedUpdate() {
