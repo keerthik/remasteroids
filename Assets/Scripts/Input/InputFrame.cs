@@ -11,15 +11,17 @@ namespace Inputs {
         // We assume only one menu action can be done in one frame
         MenuAction ?menuInput = null;
         public bool HasNoGameInput => gameInputs.Count == 0;
+        public bool HasNoMenuInput => null == menuInput;
         public float Time => time;
         public void AddGameInput(GameAction newInput) => gameInputs.Add(newInput);
         public void SetMenuInput(MenuAction newInput) => menuInput = newInput;
         public bool HasInput(GameAction toCheck) => gameInputs.Contains(toCheck);
+        public bool HasInput(MenuAction toCheck) => menuInput == toCheck;
         public InputFrame(float frametime) {
             time = frametime;
         }
 
-        public string ToString() {
+        public override string ToString() {
             string str = $"{time}";
             foreach (GameAction action in gameInputs) str += $":{(int)action}";
             return str;

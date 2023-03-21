@@ -17,7 +17,7 @@ public class PlayerController : Universal.SingletonBehaviour<PlayerController>, 
 
     public LoadableUnit loading = new();
 
-    void Awake() {
+    protected override void Awake() {
         base.Awake();
         heading = transform.forward;
         Debug.Log("Facing is " + heading);

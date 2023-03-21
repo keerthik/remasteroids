@@ -6,7 +6,6 @@ namespace Inputs {
     public class InputCoordinator : Universal.SingletonBehaviour<InputCoordinator>
     {
         public InputSource currentSource;
-        public bool inGame;
         public bool recording;
         public InputMapping controls;
         public ReplayData replay;
@@ -31,7 +30,7 @@ namespace Inputs {
         }
 
         void FixedUpdate() {
-            if (inGame) {
+            if (CoreDirector.Shared.IsInGame) {
                 CaptureDirectInputForPlayer1();
                 DispatchRecordedInputForPlayer1();
             }
