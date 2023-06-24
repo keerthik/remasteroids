@@ -12,9 +12,14 @@ Unofficial work log. Can be used as a more detailed commit log history (when it'
 - Install latest [Blender](https://www.blender.org/)
 - Create 3D model for player space ship in Blender following Colby's [space ship tutorial](https://www.youtube.com/watch?v=jo7FZBf4VkM)
 - Set up git repository
-### TODO
 - Script basic 4-control movement for player: accelerate, decelerate, turn left, turn right
 - Script momentum and angular momentum for player
+- Basic replay system
+- Add coordinator for menu state vs game state
+
+### TODO
+- Add menu navigation to replay system
+- Clean up timing system concept
 
 ## Notes
 [1] VSCode's Unity package is no longer supported, but it is [still available on github](https://github.com/Unity-Technologies/com.unity.ide.vscode/tree/next/master/Packages/com.unity.ide.vscode)
