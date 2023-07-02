@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EditorAux;
 
 namespace Inputs {
     public class InputCoordinator : Universal.SingletonBehaviour<InputCoordinator>
     {
         public InputSource currentSource;
+        [DrawIf("currentSource", 2, ComparisonType.Equals, DisablingType.ReadOnly)]
         public bool recording;
         public InputMapping controls;
         public ReplayData replay;

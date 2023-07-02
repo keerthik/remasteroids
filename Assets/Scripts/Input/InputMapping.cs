@@ -20,8 +20,8 @@ namespace Inputs {
     }
 
     public enum InputSource {
-        Player,
-        Replay,
+        Player = 1 << 0,
+        Replay = 1 << 1,
     }
 
     public class InputMapping : ScriptableObject
